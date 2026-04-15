@@ -1,0 +1,193 @@
+<div class="flex gap-10 p-5">
+
+  <!-- Venda -->
+  <div class="flex-[3] border border rounded-lg">
+
+    <!-- Title -->
+    <div class="bg-[#409bdb] text-white text-base px-3 py-1 rounded-t-lg font-sans">
+      Nova Venda
+    </div>
+
+    <div class="flex flex-col gap-5 p-3">
+      <!-- Config -->
+      <div class="flex items-center gap-10">
+
+        <!-- Data -->
+        <div class="flex flex-col gap-1">
+          <label for="data">Data*</label>
+          <input type="date" id="data" class="border rounded px-2 py-1">
+        </div>
+
+        <!-- Tipo -->
+        <div class="flex flex-col gap-1">
+          <label>Tipo*</label>
+          <div class="flex">
+            <div class="px-3 py-1 bg-green-600 text-white rounded-l cursor-pointer">
+              Venda
+            </div>
+            <div class="px-3 py-1 bg-gray-300 rounded-r cursor-pointer">
+              Orçamento
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipo venda -->
+        <div class="flex flex-col gap-1">
+          <label for="tipo-venda">Tipo de venda*</label>
+          <select id="tipo-venda" class="border rounded px-2 py-1">
+            <option selected>Presencial para consumidor final</option>
+            <option>Outro</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Cliente Formulario -->
+      <div class="flex flex-col gap-1">
+        <label for="responsavel" class="text-xl">Cliente</label>
+        <div class="flex gap-2">
+          <input type="text" id="responsavel" class="border p-1 rounded-lg" placeholder="Responsável">
+          <input type="text" id="animal" class="border p-1 rounded-lg" placeholder="Animal">
+          <button class="bg-gray-200 px-2 py-1 rounded">
+
+
+          </button>
+          <button class="bg-orange-300 px-2 py-1 rounded text-white">
+            <i class="fa-solid fa-filter"></i>
+          </button>
+          <button class="bg-gray-200 px-2 py-1 rounded text-gray-400">
+            <i class="fa-solid fa-reply"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400">Preencha um ou mais campos. Clique em pesquisar ou aperte Enter.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h3 class="text-xl">Produtos e Serviços</h3>
+        <div class="flex gap-1 items-center">
+          <select class="w-[200px]" name="" id="" class="border p-1 rounded">
+            <option value="">Selecione o animal ou deixe em branco...</option>
+          </select>
+          <select name="" id="" class="border p-1 rounded">
+            <option value="sergio">Sérgio</option>
+          </select>
+          <div class="flex">
+            <button class="bg-gray-200 px-2 py-1 m-0 rounded-l">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <input type="number" class="border px-2 py-1 w-12 m-0">
+            <button class="bg-gray-200 px-2 py-1 m-0 rounded-r">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <input class="border p-1 rounded-lg" type="text" placeholder="Produto, serviço ou ">
+          <button class="bg-gray-200 px-2 py-1 rounded">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h3>Observações</h3>
+        <textarea class="border rounded" name="" id=""></textarea>
+        <p class="text-xs text-gray-400">As observações serão impressas no demonstrativo de venda ou
+          orçamento.</p>
+      </div>
+
+    </div>
+
+    <div class="bg-gray-200 p-3 flex justify-between">
+      <div class="flex gap-3">
+        <button class="px-3 py-1 bg-green-600 text-white rounded-lg cursor-pointer">
+          Registrar recebimento
+        </button>
+        <button class="bg-gray-300 px-3 py-1 cursor-pointer rounded-lg">
+          <i class="fa-solid fa-check"></i>
+          Salvar
+        </button>
+      </div>
+      <button class="bg-gray-300 px-3 py-1 cursor-pointer rounded-lg">
+        <i class="fa-solid fa-cancel"></i>
+        Cancelar
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <div class="flex flex-col gap-2 flex-1">
+
+    <div class="border rounded-lg">
+      <div class="bg-[#409bdb] text-white rounded-t-lg px-3 py-1">
+        Caixa 338 - 26/02
+      </div>
+      <div class="p-2 grid grid-cols-2 gap-2 text-xs w-full">
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-book"></i>
+          Resumo
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-regular fa-clock"></i>
+          Última venda
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Suprimento
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Sangria
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-dollar-sign"></i>
+          Despesa
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-shuffle"></i>
+          Transferência
+        </button>
+        <button class="bg-gray-200 cursor-pointer rounded-lg p-1">
+          <i class="fa-solid fa-power-off"></i>
+          Fechar
+        </button>
+      </div>
+    </div>
+
+    <!-- Vendas -->
+    <div class="border rounded-lg">
+      <div class="bg-gray-500 text-white rounded-t-lg px-3 py-1 flex justify-between items-center">
+        Vendas
+        <i class="fa-solid fa-refresh cursor-pointer"></i>
+      </div>
+      <div class="flex gap-2 flex-col p-2">
+        <button class="bg-[#409bdb] cursor-pointer rounded-lg px-2 py-1 text-white w-fit self-center">
+          Localizar venda
+        </button>
+        <hr class="border-gray-200">
+        <div class="flex justify-between items-center">
+          <button class="bg-gray-200 px-2 py-1 m-0 rounded-l">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <select class="bg-gray-200 cursor-pointer rounded-lg px-2 py-1">
+            <option value="">📅 Últimas 24h</option>
+          </select>
+          <button class="bg-gray-200 px-2 py-1 m-0 rounded-l">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="text-sm text-gray-400 text-center">Nenhuma venda em aberto na data selecionada</div>
+      </div>
+      <div class="flex">
+        <div class="px-3 py-1 bg-gray-400 text-white rounded-bl-lg cursor-pointer w-full text-center">
+          Não pago
+        </div>
+        <div class="px-3 py-1 bg-gray-200 text-black rounded-br-lg cursor-pointer w-full text-center">
+          Pago
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

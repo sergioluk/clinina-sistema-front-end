@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Pdv } from "./features/pdv/pdv";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Pdv],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
