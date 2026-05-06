@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="flex flex-col gap-3 py-2">
+  <h3 class="text-2xl text-blue-400 mb-3">Limite de desconto</h3>
+  <ng-template matStepLabel></ng-template>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Propósito</mat-label>
+    <mat-select name="food" formControlName="tipoControleDesconto">
+      @for (controle of controles; track controle) {
+      <mat-option [value]="controle.value">{{controle.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>

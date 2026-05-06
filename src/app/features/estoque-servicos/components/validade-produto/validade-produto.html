@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="flex flex-col gap-2">
+  <p class="text-lg">Controla validade?</p>
+  <div class="flex w-full mb-4">
+    <div
+      class="bg-gray-700 text-white border border-gray-700 flex flex-1 items-center justify-center p-3 text-lg rounded-l-md">
+      Sim</div>
+    <div class="border border-gray-700 flex flex-1 items-center justify-center p-3 text-lg rounded-r-md">Não</div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Validade mais antiga</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dataValidade" (focus)="picker.open()">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>

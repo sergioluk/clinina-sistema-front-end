@@ -1,6 +1,167 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+html,
 body {
   min-height: 100dvh;
+  margin: 0;
+}
+
+body {
+  min-width: 100dvw;
+}
+
+/* ============================= */
+/* DRAWER BASE */
+/* ============================= */
+
+.cdk-overlay-pane.drawer-right,
+.cdk-overlay-pane.drawer-left,
+.cdk-overlay-pane.drawer-top,
+.cdk-overlay-pane.drawer-fullscreen {
+  max-width: 100vw !important;
+}
+
+.drawer-right .mat-mdc-dialog-container,
+.drawer-left .mat-mdc-dialog-container,
+.drawer-top .mat-mdc-dialog-container,
+.drawer-fullscreen .mat-mdc-dialog-container {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.drawer-right .mat-mdc-dialog-surface,
+.drawer-left .mat-mdc-dialog-surface,
+.drawer-top .mat-mdc-dialog-surface,
+.drawer-fullscreen .mat-mdc-dialog-surface {
+  border-radius: 0 !important;
+  background: white;
+}
+
+/* ============================= */
+/* RIGHT */
+/* ============================= */
+
+.drawer-right .mat-mdc-dialog-surface {
+  transform: translateX(100%);
+  animation: slideInRight 250ms ease forwards;
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.2);
+  overflow: visible !important;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawer-right.closing .mat-mdc-dialog-surface {
+  animation: slideOutRight 200ms ease forwards;
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ============================= */
+/* LEFT */
+/* ============================= */
+
+.drawer-left .mat-mdc-dialog-surface {
+  transform: translateX(-100%);
+  animation: slideInLeft 250ms ease forwards;
+  box-shadow: 8px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawer-left.closing .mat-mdc-dialog-surface {
+  animation: slideOutLeft 200ms ease forwards;
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ============================= */
+/* TOP */
+/* ============================= */
+
+.drawer-top .mat-mdc-dialog-surface {
+  transform: translateY(-100%);
+  animation: slideInTop 250ms ease forwards;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.drawer-top.closing .mat-mdc-dialog-surface {
+  animation: slideOutTop 200ms ease forwards;
+}
+
+@keyframes slideOutTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* ============================= */
+/* FULLSCREEN */
+/* ============================= */
+
+.drawer-fullscreen .mat-mdc-dialog-surface {
+  transform: translateY(-100%);
+  animation: slideInFull 250ms ease forwards;
+}
+
+@keyframes slideInFull {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.drawer-fullscreen.closing .mat-mdc-dialog-surface {
+  animation: slideOutFull 200ms ease forwards;
+}
+
+@keyframes slideOutFull {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }

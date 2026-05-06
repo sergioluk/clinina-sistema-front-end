@@ -1,13 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Pdv } from "./features/pdv/pdv";
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { AppShell } from './layout/app-shell/app-shell';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Pdv],
+  imports: [AppShell],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('clinina-sistema-front-end');
+  protected readonly title = signal('Clinina');
 }

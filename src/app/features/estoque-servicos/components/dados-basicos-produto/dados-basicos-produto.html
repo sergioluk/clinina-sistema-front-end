@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="flex flex-col gap-3 py-2">
+  <h3 class="text-2xl text-blue-400 mb-3">Dados básicos</h3>
+  <ng-template matStepLabel></ng-template>
+  <mat-form-field appearance="outline">
+    <mat-label>Tipo</mat-label>
+    <mat-select name="food" formControlName="tipoProduto">
+      @for (tipo of tipos; track tipo) {
+      <mat-option [value]="tipo.value">{{tipo.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if (tipoProduto == ProdutoTipoEnum.PRODUTO) {
+    <mat-form-field appearance="outline">
+      <mat-label>Código de barras</mat-label>
+      <input matInput formControlName="codigoDeBarras" required>
+    </mat-form-field>
+  }
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nomeProduto" required>
+  </mat-form-field>
+
+  @if (tipoProduto == ProdutoTipoEnum.PRODUTO || tipoProduto == ProdutoTipoEnum.SERVICO) {
+    <mat-form-field appearance="outline">
+      <mat-label>Unidade de venda</mat-label>
+      <input matInput formControlName="unidade" required>
+    </mat-form-field>
+  }
+
+
+  @if (tipoProduto == ProdutoTipoEnum.PRODUTO) {
+    <mat-form-field appearance="outline">
+      <mat-label>Marca</mat-label>
+      <input matInput [value]="marcaSelecionada?.nome" readonly required (click)="abrirSelecaoMarca()" />
+    </mat-form-field>
+  }
+
+  <mat-form-field appearance="outline">
+    <mat-label>Grupo ao qual pertence</mat-label>
+    <input matInput [value]="grupoSelecionado?.nome" readonly required (click)="abrirSelecaoGrupo()" />
+  </mat-form-field>
+
+  @if (tipoProduto == ProdutoTipoEnum.PACOTE) {
+    <app-validade-produto [form]="validadeForm"></app-validade-produto>
+  }
+</form>

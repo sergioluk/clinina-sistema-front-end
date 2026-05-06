@@ -1,0 +1,146 @@
+<div class="p-3">
+  <div class="flex justify-between items-center py-4">
+    <app-icon (click)="fechar()" class="text-4xl" name="left-arrow"></app-icon>
+    <h2 class="text-4xl">Adicionar</h2>
+    <div></div>
+  </div>
+  <hr>
+
+  <mat-stepper linear>
+
+    @for (step of visibleSteps(); track step.id) {
+
+    <mat-step [stepControl]="getStepForm(step.id)">
+
+      @switch (step.id) {
+
+      @case ('dadosBasicos') {
+        <app-dados-basicos-produto [form]="dadosBasicosFormGroup" />
+        <div>
+          <button class="w-full" matButton="filled" matStepperNext>Próximo</button>
+        </div>
+        <pre>{{ dadosBasicosFormGroup.value | json }}</pre>
+      }
+
+      @case ('custoPreco') {
+        <app-custo-preco-produto [form]="custoPrecoFormGroup" [tipoProduto]="tipoProduto() ?? ProdutoTipoEnum.PRODUTO"/>
+        <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre>{{ custoPrecoFormGroup.value | json }}</pre>
+      }
+
+      @case ('estoqueValidade') {
+        <app-estoque-validade-produto [estoqueForm]="estoqueFormGroup"  [validadeForm]="validadeFormGroup" ></app-estoque-validade-produto>
+        <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre (click)="send()">{{ estoqueValidadeFormGroup.value | json }}</pre>
+      }
+
+      @case ('limiteDesconto') {
+        <app-limite-desconto-produto [form]="limiteDescontoFormGroup"></app-limite-desconto-produto>
+        <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre>{{ limiteDescontoFormGroup.value | json }}</pre>
+      }
+
+      @case ('areas') {
+        <form [formGroup]="areasFormGroup" class="flex flex-col gap-3 py-2">
+          <h3 class="text-2xl text-blue-400 mb-3">Áreas</h3>
+          <ng-template matStepLabel></ng-template>
+
+          <p class="text-lg">O produto pode ser vendido por usuários de quais áreas?*</p>
+          <div class="flex flex-col gap-2">
+            <mat-checkbox formControlName="banhoTosa">Banho e Tosa</mat-checkbox>
+            <mat-checkbox formControlName="clinica">Clinica</mat-checkbox>
+            <mat-checkbox formControlName="petshop">Petshop</mat-checkbox>
+          </div>
+          <div class="text-xs">Apenas os usuários que estão vinculados às áreas marcadas acima conseguirão vender o produto.</div>
+          <div>
+            <button matButton matStepperPrevious>Back</button>
+            <!-- <button matButton (click)="step.reset()">Reset</button> -->
+          </div>
+          <pre>{{ areasFormGroup.value | json }}</pre>
+        </form>
+      }
+
+      @case ('itensPacote') {
+        <!-- <app-itens-pacote /> -->
+      }
+
+      @case ('termosUso') {
+        <!-- <app-termos-uso /> -->
+      }
+
+      @case ('itensKit') {
+        <!-- <app-itens-kit /> -->
+      }
+
+      }
+
+    </mat-step>
+
+    }
+
+  </mat-stepper>
+
+  <!-- <mat-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="dadosBasicosFormGroup">
+      <app-dados-basicos-produto [form]="dadosBasicosFormGroup" [validadeForm]="validadeFormGroup"></app-dados-basicos-produto>
+      <div>
+          <button class="w-full" matButton="filled" matStepperNext>Próximo</button>
+      </div>
+      <pre>{{ dadosBasicosFormGroup.value | json }}</pre>
+    </mat-step>
+    <mat-step [stepControl]="custoPrecoFormGroup">
+      <app-custo-preco-produto [form]="custoPrecoFormGroup"></app-custo-preco-produto>
+      <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre>{{ custoPrecoFormGroup.value | json }}</pre>
+    </mat-step>
+    <mat-step [stepControl]="estoqueValidadeFormGroup">
+      <app-estoque-validade-produto [estoqueForm]="estoqueFormGroup"  [validadeForm]="validadeFormGroup" ></app-estoque-validade-produto>
+      <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre (click)="send()">{{ estoqueValidadeFormGroup.value | json }}</pre>
+    </mat-step>
+    <mat-step [stepControl]="limiteDescontoFormGroup">
+      <app-limite-desconto-produto [form]="limiteDescontoFormGroup"></app-limite-desconto-produto>
+      <div>
+          <button matButton matStepperPrevious>Back</button>
+          <button matButton matStepperNext>Next</button>
+        </div>
+        <pre>{{ limiteDescontoFormGroup.value | json }}</pre>
+    </mat-step>
+    <mat-step [stepControl]="areasFormGroup">
+      <form [formGroup]="areasFormGroup" class="flex flex-col gap-3 py-2">
+        <h3 class="text-2xl text-blue-400 mb-3">Áreas</h3>
+        <ng-template matStepLabel></ng-template>
+
+        <p class="text-lg">O produto pode ser vendido por usuários de quais áreas?*</p>
+        <div class="flex flex-col gap-2">
+          <mat-checkbox formControlName="banhoTosa">Banho e Tosa</mat-checkbox>
+          <mat-checkbox formControlName="clinica">Clinica</mat-checkbox>
+          <mat-checkbox formControlName="petshop">Petshop</mat-checkbox>
+        </div>
+        <div class="text-xs">Apenas os usuários que estão vinculados às áreas marcadas acima conseguirão vender o produto.</div>
+        <div>
+          <button matButton matStepperPrevious>Back</button>
+        <button matButton (click)="stepper.reset()">Reset</button>
+        </div>
+        <pre>{{ areasFormGroup.value | json }}</pre>
+      </form>
+    </mat-step>
+  </mat-stepper> -->
+
+</div>
+<button (click)="fechar()">Fechar</button>

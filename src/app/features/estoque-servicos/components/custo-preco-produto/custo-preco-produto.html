@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="flex flex-col gap-5 py-2">
+  <h3 class="text-2xl text-blue-400 mb-3">Custo e preço</h3>
+  <ng-template matStepLabel></ng-template>
+  @if (tipoProduto !== ProdutoTipoEnum.SERVICO) {
+    <mat-form-field appearance="outline">
+      <mat-label>Propósito</mat-label>
+      <mat-select name="food" formControlName="proposito">
+        @for (proposito of propositos; track proposito) {
+        <mat-option [value]="proposito.value">{{proposito.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  }
+
+  <mat-form-field appearance="outline">
+    <mat-label>Custo de aquisição</mat-label>
+    <input matInput formControlName="custo" required>
+    <mat-hint>Custo do produto incluindo impostos e frete.</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Markup desejado</mat-label>
+    <input matInput formControlName="markup" required>
+    <mat-hint>Percentual aplicado sobre o custo do item para a formação do preço de venda.</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="mb-1">
+    <mat-label>Preço de venda sugerido</mat-label>
+    <input matInput disabled>
+    <mat-hint class="text-gray-400">O preço de venda sugerido é calculado com base no custo de aquisição e no
+      markup desejado.</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Preço de venda</mat-label>
+    <input matInput formControlName="precoVenda" required>
+  </mat-form-field>
+
+  <div class="flex flex-col gap-3">
+    <div class="flex flex-col">
+      <mat-checkbox formControlName="exibePreco">Exibe na lista de preço</mat-checkbox>
+      <div class="text-xs">Exibe o item em Consultas - Lista de preço.</div>
+    </div>
+    <div class="flex flex-col">
+      <mat-checkbox formControlName="permiteAlterarPreco">Permite alterar preço na venda</mat-checkbox>
+      <div class="text-xs">Usuários autorizados poderão alterar o preço do item na venda.</div>
+    </div>
+  </div>
+</form>
